@@ -1,0 +1,125 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Header */
+header {
+  background-color: #c0392b;
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+}
+header h1 {
+  font-size: 2.5rem;
+}
+header p {
+  font-size: 1.2rem;
+}
+
+/* Navigation */
+nav {
+  background-color: #e74c3c;
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+nav li {
+  margin: 10px 20px;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Menu Section */
+.menu {
+  padding: 30px;
+  background: #fdf3e7;
+}
+.menu h2 {
+  text-align: center;
+  color: #c0392b;
+  margin-bottom: 20px;
+}
+.category {
+  margin-bottom: 30px;
+  border: 2px solid #c0392b;
+  border-radius: 10px;
+  padding: 15px;
+  background: white;
+}
+.category h3 {
+  color: #e67e22;
+  margin-bottom: 10px;
+}
+.items {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+}
+.item {
+  flex: 0 0 250px;
+  background: #fff7f0;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.item h4 {
+  color: #c0392b;
+}
+.item span {
+  display: block;
+  color: #27ae60;
+  margin-top: 8px;
+}
+
+/* Chef’s Special */
+.special {
+  background: #fef0e7;
+  padding: 30px;
+  text-align: center;
+}
+.special img {
+  width: 200px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.special-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.price {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+/* Contact Section */
+.contact {
+  padding: 30px;
+  text-align: center;
+  background-color: #fdebd0;
+}
+.contact p {
+  margin: 5px 0;
+}
+
+/* Footer */
+footer {
+  background-color: #c0392b;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
