@@ -150,6 +150,18 @@ nav a:hover {
   margin-top: 8px;
 }
 
+/* Menu of the Day */
+.menu-day {
+  background-color: #fdebd0;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px dashed #e67e22;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+
 /* Contact Section */
 .contact {
   padding: 40px 20px;
