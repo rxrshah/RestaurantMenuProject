@@ -1,4 +1,4 @@
-/* Basic Reset */
+/* Reset & Font */
 * {
   margin: 0;
   padding: 0;
@@ -6,23 +6,44 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* Header */
+/* Body */
+body {
+  background-color: #fffaf4;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* Header with background image */
 header {
-  background-color: #c0392b;
+  background: url("https://imgs.search.brave.com/3HAde16jBQmN3b3n0j6sQFWMRiGf3jPvaX74HclqHGI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTQw/Mzk3MzQxOS9waG90/by90YWJsZS10b3At/b2YtZm9vZC1zcHJl/YWQtb24tdGFibGUu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PTJjUk9VTXVyWlV0/dXZxRi1icDhsVmla/MHdEWEJOa1pCY0lq/UWoyUVFsZWM9") center/cover no-repeat;
   color: white;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.55);
+  width: 100%;
   text-align: center;
-  padding: 30px 0;
+  padding: 50px 0;
 }
 header h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  letter-spacing: 2px;
 }
 header p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  color: #ffcc99;
 }
 
 /* Navigation */
 nav {
-  background-color: #e74c3c;
+  background-color: #c0392b;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 nav ul {
   display: flex;
@@ -36,27 +57,62 @@ nav a {
   color: white;
   text-decoration: none;
   font-weight: 500;
+  transition: 0.3s;
 }
 nav a:hover {
-  text-decoration: underline;
+  color: #ffcc99;
+  transform: scale(1.1);
+}
+
+/* Chef’s Special */
+.special {
+  background: #fef0e7;
+  padding: 50px 20px;
+  text-align: center;
+}
+.special-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.special img {
+  width: 250px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.special img:hover {
+  transform: scale(1.05);
+}
+.price {
+  color: #27ae60;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 /* Menu Section */
 .menu {
-  padding: 30px;
-  background: #fdf3e7;
+  padding: 50px 20px;
+  background: #fff8ef;
 }
 .menu h2 {
   text-align: center;
   color: #c0392b;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-size: 2rem;
 }
 .category {
   margin-bottom: 30px;
-  border: 2px solid #c0392b;
+  border: 2px solid #e67e22;
   border-radius: 10px;
-  padding: 15px;
+  padding: 20px;
   background: white;
+  transition: 0.3s;
+}
+.category:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: scale(1.01);
 }
 .category h3 {
   color: #e67e22;
@@ -66,16 +122,27 @@ nav a:hover {
   display: flex;
   gap: 15px;
   overflow-x: auto;
+  padding-bottom: 10px;
 }
 .item {
   flex: 0 0 250px;
   background: #fff7f0;
   border-radius: 10px;
   padding: 15px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 .item h4 {
   color: #c0392b;
+  margin-bottom: 5px;
+}
+.item p {
+  font-size: 0.9rem;
+  color: #555;
 }
 .item span {
   display: block;
@@ -83,34 +150,15 @@ nav a:hover {
   margin-top: 8px;
 }
 
-/* Chef’s Special */
-.special {
-  background: #fef0e7;
-  padding: 30px;
-  text-align: center;
-}
-.special img {
-  width: 200px;
-  border-radius: 10px;
-  margin-right: 20px;
-}
-.special-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.price {
-  color: #27ae60;
-  font-weight: bold;
-}
-
 /* Contact Section */
 .contact {
-  padding: 30px;
+  padding: 40px 20px;
   text-align: center;
   background-color: #fdebd0;
+}
+.contact h2 {
+  color: #c0392b;
+  margin-bottom: 15px;
 }
 .contact p {
   margin: 5px 0;
@@ -122,4 +170,25 @@ footer {
   color: white;
   text-align: center;
   padding: 15px 0;
+  font-size: 0.9rem;
+}
+
+/* Back to Top */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  transition: 0.3s;
+}
+#backToTop:hover {
+  background-color: #e67e22;
 }
