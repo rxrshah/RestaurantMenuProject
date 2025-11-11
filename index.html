@@ -8,22 +8,24 @@
 </head>
 <body>
   <!-- Header -->
-  <header>
-    <h1>Café Delight</h1>
-    <p>Fresh Taste Every Day</p>
+  <header id="home">
+    <div class="overlay">
+      <h1>Café Delight</h1>
+      <p>Fresh Taste Every Day</p>
+    </div>
   </header>
 
   <!-- Navigation Bar -->
   <nav>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Menu</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <!-- Chef’s Special -->
-  <section class="special">
+  <section class="special" id="special">
     <h2>👨‍🍳 Chef’s Special</h2>
     <div class="special-item">
       <img src="https://tarateaspoon.com/wp-content/uploads/2019/09/Baked-Salmon_Cookbook_001-revised-sz-scaled.jpg" alt="Chef Special Dish">
@@ -36,8 +38,8 @@
   </section>
 
   <!-- Menu Section -->
-  <section class="menu">
-    <h2>🍽️ Menu</h2>
+  <section class="menu" id="menu">
+    <h2>🍽️ Our Menu</h2>
 
     <div class="category">
       <h3>🥗 Starters</h3>
@@ -104,7 +106,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="contact">
+  <section class="contact" id="contact">
     <h2>📞 Contact Us</h2>
     <p><strong>Address:</strong> 12, MG Road, Mumbai, India</p>
     <p><strong>Phone:</strong> +91 98765 43210</p>
@@ -113,7 +115,31 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Café Delight. All Rights Reserved.</p>
+    <p>© 2025 Café Delight</p>
   </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop">↑</button>
+
+  <script>
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Back to top button
+    const topBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
