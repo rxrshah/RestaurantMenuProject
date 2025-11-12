@@ -1,21 +1,87 @@
+/* CSS Variables for Themes */
+:root {
+  /* Replace header-bg URL with your restaurant background image */
+  --header-bg: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/a0/36/2f/wayfarer-restaurant.jpg?w=900&h=-1&s=1"); /* Add your image here */
+  --bg-color: #fffaf4;
+  --text-color: #333;
+  --menu-bg: #fff8ef;
+  --special-bg: #fef0e7;
+  --contact-bg: #fdebd0;
+  --nav-bg: #c0392b;
+  --nav-text: white;
+  --accent: #e67e22;
+  --price-color: #27ae60;
+  --card-bg: #fff7f0;
+  --border-color: #e67e22;
+  --rating-color: #ffd700;
+}
+
+body.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #f0f0f0;
+  /* Replace dark-header-bg URL with your dark theme restaurant background image */
+  --header-bg: url("https://d3h1lg3ksw6i6b.cloudfront.net/media/image/2023/12/28/319601352da7487e83a6d604427e018d_darkroomnyc-hero.jpg"); /* Add your dark image here */
+  --menu-bg: #2a2a2a;
+  --special-bg: #3a3a3a;
+  --contact-bg: #4a4a4a;
+  --nav-bg: #8B4513;
+  --nav-text: #ffcc99;
+  --accent: #ff8c00;
+  --price-color: #90EE90;
+  --card-bg: #404040;
+  --border-color: #ff8c00;
+  --rating-color: #ffcc00;
+}
+
 /* Reset & Font */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
-
 /* Body */
 body {
-  background-color: #fffaf4;
-  color: #333;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-/* Header with background image */
+/* Loading Spinner */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+.loader i { font-size: 3rem; color: var(--accent); }
+/* Dark Mode Toggle */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+.theme-toggle:hover { transform: scale(1.05); } /* Simple scale */
+/* Header - Simplified: No parallax, clean fixed bg */
 header {
-  background: url("https://imgs.search.brave.com/3HAde16jBQmN3b3n0j6sQFWMRiGf3jPvaX74HclqHGI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTQw/Mzk3MzQxOS9waG90/by90YWJsZS10b3At/b2YtZm9vZC1zcHJl/YWQtb24tdGFibGUu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PTJjUk9VTXVyWlV0/dXZxRi1icDhsVmla/MHdEWEJOa1pCY0lq/UWoyUVFsZWM9") center/cover no-repeat;
+  background: var(--header-bg) center/cover no-repeat;
   color: white;
   height: 300px;
   display: flex;
@@ -32,15 +98,16 @@ header {
 header h1 {
   font-size: 3rem;
   letter-spacing: 2px;
+  font-weight: 700;
 }
 header p {
   font-size: 1.3rem;
   color: #ffcc99;
+  font-weight: 300;
 }
-
-/* Navigation */
+/* Navigation - Professional simple flex */
 nav {
-  background-color: #c0392b;
+  background-color: var(--nav-bg);
   position: sticky;
   top: 0;
   z-index: 999;
@@ -54,19 +121,25 @@ nav li {
   margin: 10px 20px;
 }
 nav a {
-  color: white;
+  color: var(--nav-text);
   text-decoration: none;
   font-weight: 500;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 nav a:hover {
   color: #ffcc99;
-  transform: scale(1.1);
+  transform: scale(1.05); /* Simple hover */
 }
-
+nav i { margin-right: 5px; }
+/* Simple Fade-in for Items */
+.item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
 /* Chef’s Special */
 .special {
-  background: #fef0e7;
+  background: var(--special-bg);
   padding: 50px 20px;
   text-align: center;
 }
@@ -83,115 +156,227 @@ nav a:hover {
   transition: transform 0.3s ease;
 }
 .special img:hover {
-  transform: scale(1.05);
+  transform: scale(1.02); /* Subtle simple hover */
 }
+.rating {
+  color: var(--rating-color);
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+.rating i { margin-right: 2px; }
 .price {
-  color: #27ae60;
+  color: var(--price-color);
   font-weight: bold;
   margin-top: 10px;
+  display: block;
+  text-align: right;
 }
-
+/* Cart Button - Simple professional */
+.cart-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  transition: 0.3s ease;
+}
+.cart-btn:hover {
+  background: var(--nav-bg);
+  transform: scale(1.02); /* Simple scale */
+}
 /* Menu Section */
 .menu {
   padding: 50px 20px;
-  background: #fff8ef;
+  background: var(--menu-bg);
 }
 .menu h2 {
   text-align: center;
-  color: #c0392b;
+  color: var(--nav-bg);
   margin-bottom: 25px;
   font-size: 2rem;
+  font-weight: 600;
+}
+.search-container {
+  max-width: 400px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+#searchInput {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border: 2px solid var(--border-color);
+  border-radius: 25px;
+  font-size: 1rem;
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: border-color 0.3s ease;
+}
+#searchInput:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+#searchInput::placeholder { color: #999; }
+.search-container i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
 }
 .category {
   margin-bottom: 30px;
-  border: 2px solid #e67e22;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
   padding: 20px;
-  background: white;
-  transition: 0.3s;
+  background: var(--card-bg);
+  transition: 0.3s ease;
 }
 .category:hover {
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transform: scale(1.01);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  transform: scale(1.005); /* Very subtle */
 }
 .category h3 {
-  color: #e67e22;
+  color: var(--accent);
   margin-bottom: 10px;
+  font-weight: 600;
 }
 .items {
   display: flex;
   gap: 15px;
   overflow-x: auto;
   padding-bottom: 10px;
+  scrollbar-width: thin;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.items::-webkit-scrollbar {
+  height: 8px;
+}
+.items::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+.items::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
 }
 .item {
   flex: 0 0 250px;
-  background: #fff7f0;
   border-radius: 10px;
   padding: 15px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  background: var(--card-bg);
 }
+.item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+.item:hover img { transform: scale(1.01); } /* Subtle image hover */
 .item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px); /* Softer lift */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 .item h4 {
-  color: #c0392b;
+  color: var(--nav-bg);
   margin-bottom: 5px;
+  font-weight: 500;
 }
 .item p {
   font-size: 0.9rem;
   color: #555;
+  flex-grow: 1;
 }
-.item span {
-  display: block;
-  color: #27ae60;
-  margin-top: 8px;
+.item .price {
+  align-self: flex-end;
+  margin-top: auto;
+  text-align: right;
 }
-
 /* Menu of the Day */
 .menu-day {
-  background-color: #fdebd0;
+  background-color: var(--contact-bg);
   text-align: center;
   padding: 15px;
   border-radius: 10px;
-  border: 2px dashed #e67e22;
+  border: 2px dashed var(--border-color);
   font-weight: 500;
   margin-top: 20px;
+  transition: 0.3s ease;
 }
-
-
+.menu-day:hover { transform: scale(1.01); } /* Subtle */
 /* Contact Section */
 .contact {
   padding: 40px 20px;
   text-align: center;
-  background-color: #fdebd0;
+  background-color: var(--contact-bg);
 }
 .contact h2 {
-  color: #c0392b;
+  color: var(--nav-bg);
   margin-bottom: 15px;
+  font-weight: 600;
 }
 .contact p {
   margin: 5px 0;
 }
-
-/* Footer */
+.contact-form {
+  max-width: 500px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: border-color 0.3s ease;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.contact-form button {
+  padding: 10px;
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 500;
+}
+.contact-form button:hover { 
+  background: var(--accent);
+  transform: scale(1.01); /* Subtle */
+}
+/* Footer - Clean, no subscribe */
 footer {
-  background-color: #c0392b;
-  color: white;
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
   text-align: center;
   padding: 15px 0;
   font-size: 0.9rem;
 }
-
 /* Back to Top */
 #backToTop {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background-color: #c0392b;
-  color: white;
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -199,8 +384,25 @@ footer {
   font-size: 20px;
   cursor: pointer;
   display: none;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 #backToTop:hover {
-  background-color: #e67e22;
+  background-color: var(--accent);
+  transform: scale(1.05); /* Simple */
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  header h1 { font-size: 2rem; }
+  header p { font-size: 1rem; }
+  .items { 
+    gap: 10px; 
+    flex-direction: column; 
+    align-items: center; 
+    overflow-x: hidden;
+  }
+  .item { flex: 0 0 auto; max-width: 100%; }
+  nav ul { flex-direction: column; text-align: center; }
+  nav li { margin: 5px 0; }
+  .special-item { flex-direction: column; text-align: center; }
 }
