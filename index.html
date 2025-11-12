@@ -4,130 +4,233 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Café Delight | Fresh Taste Every Day</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
+  <!-- Loading Spinner -->
+  <div id="loader" class="loader">
+    <i class="fas fa-spinner fa-spin"></i>
+  </div>
+
+  <!-- Dark Mode Toggle -->
+  <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Header - Simplified like initial: No parallax, just clean overlay -->
   <header id="home">
     <div class="overlay">
       <h1>Café Delight</h1>
       <p>Fresh Taste Every Day</p>
     </div>
   </header>
-
-  <!-- Navigation Bar -->
+  <!-- Navigation Bar - Simplified: Clean flex, no extra effects beyond hover scale -->
   <nav>
     <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#menu"><i class="fas fa-utensils"></i> Menu</a></li>
+      <li><a href="#contact"><i class="fas fa-phone"></i> Contact</a></li>
     </ul>
   </nav>
-
   <!-- Chef’s Special -->
   <section class="special" id="special">
-    <h2>👨‍🍳 Chef’s Special</h2>
+    <h2><i class="fas fa-star"></i> Chef’s Special</h2>
     <div class="special-item">
-      <img src="https://tarateaspoon.com/wp-content/uploads/2019/09/Baked-Salmon_Cookbook_001-revised-sz-scaled.jpg" alt="Chef Special Dish">
+      <!-- Replace with actual image URL for Chef's Special Dish -->
+      <img src="https://www.lecremedelacrumb.com/wp-content/uploads/2022/07/grilled-lemon-butter-salmon-8sm-3.jpg" alt="Grilled Lemon Butter Salmon">
       <div>
         <h3>Grilled Lemon Butter Salmon</h3>
         <p>Freshly grilled salmon served with lemon butter sauce and herbs.</p>
+        <div class="rating" aria-label="Rating: 4.8 out of 5">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <span>4.8</span>
+        </div>
         <span class="price">₹499</span>
+        <button class="cart-btn" data-item="Grilled Lemon Butter Salmon">🛒 Add to Cart</button>
       </div>
     </div>
   </section>
-
   <!-- Menu Section -->
   <section class="menu" id="menu">
-    <h2>🍽️ Our Menu</h2>
-
+    <h2><i class="fas fa-book-open"></i> Our Menu</h2>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search for a dish..." aria-label="Search dishes">
+      <i class="fas fa-search"></i>
+    </div>
     <div class="category">
-      <h3>🥗 Starters</h3>
-      <div class="items">
-        <div class="item">
+      <h3><i class="fas fa-seedling"></i> Starters</h3>
+      <div class="items" role="list">
+        <div class="item" data-dish="garlic bread" role="listitem">
+          <!-- Replace with actual image URL for Garlic Bread -->
+          <img src="https://static01.nyt.com/images/2018/12/11/dining/as-garlic-bread/as-garlic-bread-googleFourByThree-v2.jpg" alt="Garlic Bread">
           <h4>Garlic Bread</h4>
           <p>Toasted bread with garlic and butter.</p>
-          <span>₹99</span>
+          <div class="rating" aria-label="Rating: 4.5 out of 5">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span>4.5</span>
+          </div>
+          <span class="price">₹99</span>
+          <button class="cart-btn" data-item="Garlic Bread">🛒 Add to Cart</button>
         </div>
-        <div class="item">
+        <div class="item" data-dish="tomato soup" role="listitem">
+          <!-- Replace with actual image URL for Tomato Soup -->
+          <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2022/11/tomato-soup-recipe.jpg" alt="Tomato Soup">
           <h4>Tomato Soup</h4>
           <p>Hot creamy tomato soup with herbs.</p>
-          <span>₹129</span>
+          <div class="rating" aria-label="Rating: 4.7 out of 5">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span>4.7</span>
+          </div>
+          <span class="price">₹129</span>
+          <button class="cart-btn" data-item="Tomato Soup">🛒 Add to Cart</button>
         </div>
-        <div class="item">
+        <div class="item" data-dish="veg spring rolls" role="listitem">
+          <!-- Replace with actual image URL for Veg Spring Rolls -->
+          <img src="https://d1mxd7n691o8sz.cloudfront.net/static/recipe/recipe/2023-12/Vegetable-Spring-Rolls-2-1-906001560ca545c8bc72baf473f230b4_thumbnail_170.jpeg" alt="Veg Spring Rolls">
           <h4>Veg Spring Rolls</h4>
           <p>Stuffed rolls served with spicy sauce.</p>
-          <span>₹149</span>
+          <div class="rating" aria-label="Rating: 4.3 out of 5">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span>4.3</span>
+          </div>
+          <span class="price">₹149</span>
+          <button class="cart-btn" data-item="Veg Spring Rolls">🛒 Add to Cart</button>
         </div>
       </div>
     </div>
-
     <div class="category">
-      <h3>🍛 Main Course</h3>
-      <div class="items">
-        <div class="item">
+      <h3><i class="fas fa-drumstick-bite"></i> Main Course</h3>
+      <div class="items" role="list">
+        <div class="item" data-dish="paneer butter masala" role="listitem">
+          <!-- Replace with actual image URL for Paneer Butter Masala -->
+          <img src="https://myfoodstory.com/wp-content/uploads/2021/07/restaurant-style-paneer-butter-masala-2-500x500.jpg" alt="Paneer Butter Masala">
           <h4>Paneer Butter Masala</h4>
           <p>Soft paneer in creamy tomato gravy.</p>
-          <span>₹249</span>
+          <div class="rating" aria-label="Rating: 4.9 out of 5">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>4.9</span>
+          </div>
+          <span class="price">₹249</span>
+          <button class="cart-btn" data-item="Paneer Butter Masala">🛒 Add to Cart</button>
         </div>
-        <div class="item">
+        <div class="item" data-dish="chicken biryani" role="listitem">
+          <!-- Replace with actual image URL for Chicken Biryani -->
+          <img src="https://www.cubesnjuliennes.com/wp-content/uploads/2020/07/Chicken-Biryani-Recipe.jpg" alt="Chicken Biryani">
           <h4>Chicken Biryani</h4>
           <p>Spiced basmati rice with tender chicken.</p>
-          <span>₹299</span>
+          <div class="rating" aria-label="Rating: 4.6 out of 5">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span>4.6</span>
+          </div>
+          <span class="price">₹299</span>
+          <button class="cart-btn" data-item="Chicken Biryani">🛒 Add to Cart</button>
         </div>
-        <div class="item">
+        <div class="item" data-dish="veg fried rice" role="listitem">
+          <!-- Replace with actual image URL for Veg Fried Rice -->
+          <img src="https://www.kannammacooks.com/wp-content/uploads/schezwan-veg-fried-rice-1.jpg" alt="Veg Fried Rice">
           <h4>Veg Fried Rice</h4>
           <p>Rice stir-fried with vegetables and sauces.</p>
-          <span>₹199</span>
+          <div class="rating" aria-label="Rating: 4.4 out of 5">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span>4.4</span>
+          </div>
+          <span class="price">₹199</span>
+          <button class="cart-btn" data-item="Veg Fried Rice">🛒 Add to Cart</button>
         </div>
       </div>
     </div>
-
     <div class="category">
-      <h3>🍰 Desserts</h3>
-      <div class="items">
-        <div class="item">
+      <h3><i class="fas fa-ice-cream"></i> Desserts</h3>
+      <div class="items" role="list">
+        <div class="item" data-dish="chocolate lava cake" role="listitem">
+          <!-- Replace with actual image URL for Chocolate Lava Cake -->
+          <img src="https://images.getrecipekit.com/20250325120225-how-20to-20make-20chocolate-20molten-20lava-20cake-20in-20the-20microwave.png?width=650&quality=90&" alt="Chocolate Lava Cake">
           <h4>Chocolate Lava Cake</h4>
           <p>Hot chocolate cake with molten center.</p>
-          <span>₹149</span>
+          <div class="rating" aria-label="Rating: 4.8 out of 5">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span>4.8</span>
+          </div>
+          <span class="price">₹149</span>
+          <button class="cart-btn" data-item="Chocolate Lava Cake">🛒 Add to Cart</button>
         </div>
-        <div class="item">
+        <div class="item" data-dish="gulab jamun" role="listitem">
+          <!-- Replace with actual image URL for Gulab Jamun -->
+          <img src="https://i0.wp.com/www.chitrasfoodbook.com/wp-content/uploads/2016/10/gulab-jamun-using-mix.jpg?w=1200&ssl=1" alt="Gulab Jamun">
           <h4>Gulab Jamun</h4>
           <p>Classic Indian dessert soaked in syrup.</p>
-          <span>₹99</span>
+          <div class="rating" aria-label="Rating: 4.2 out of 5">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <span>4.2</span>
+          </div>
+          <span class="price">₹99</span>
+          <button class="cart-btn" data-item="Gulab Jamun">🛒 Add to Cart</button>
         </div>
-        <div class="item">
+        <div class="item" data-dish="ice cream sundae" role="listitem">
+          <!-- Replace with actual image URL for Ice Cream Sundae -->
+          <img src="https://www.chocolatemoosey.com/wp-content/uploads/2016/04/Fried-Ice-Cream-Sundaes-3227.jpg" alt="Ice Cream Sundae">
           <h4>Ice Cream Sundae</h4>
           <p>Three scoops topped with nuts and syrup.</p>
-          <span>₹129</span>
+          <div class="rating" aria-label="Rating: 4.7 out of 5">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            <span>4.7</span>
+          </div>
+          <span class="price">₹129</span>
+          <button class="cart-btn" data-item="Ice Cream Sundae">🛒 Add to Cart</button>
         </div>
       </div>
     </div>
-
-        <!-- Menu of the Day -->
+    <!-- Menu of the Day -->
     <div class="menu-day">
-      <h3>⭐ Menu of the Day</h3>
+      <h3><i class="fas fa-clock"></i> Menu of the Day</h3>
       <p><strong>Butter Naan + Paneer Tikka + Sweet Lassi — ₹299</strong></p>
+      <button class="cart-btn" data-item="Menu of the Day">🛒 Add to Cart</button>
     </div>
   </section>
-
   <!-- Contact Section -->
   <section class="contact" id="contact">
-    <h2>📞 Contact Us</h2>
+    <h2><i class="fas fa-envelope"></i> Contact Us</h2>
     <p><strong>Address:</strong> 12, MG Road, Mumbai, India</p>
     <p><strong>Phone:</strong> +91 98765 43210</p>
     <p><strong>Opening Hours:</strong> 10:00 AM – 10:00 PM</p>
+    <form class="contact-form" aria-label="Contact form">
+      <input type="text" placeholder="Your Name" required aria-label="Your name">
+      <input type="email" placeholder="Your Email" required aria-label="Your email">
+      <textarea placeholder="Your Message" rows="4" required aria-label="Your message"></textarea>
+      <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+    </form>
   </section>
-
   <!-- Footer -->
   <footer>
     <p>© 2025 Café Delight</p>
   </footer>
-
   <!-- Back to Top Button -->
-  <button id="backToTop">↑</button>
-
+  <button id="backToTop" aria-label="Back to top">↑</button>
   <script>
+    // Loading Spinner
+    window.addEventListener('load', () => {
+      document.getElementById('loader').style.display = 'none';
+    });
+
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const icon = themeToggle.querySelector('i');
+      icon.classList.toggle('fa-moon');
+      icon.classList.toggle('fa-sun');
+      localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+    });
+    if (localStorage.getItem('darkMode') === 'true') {
+      body.classList.add('dark-mode');
+      themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+    }
+
     // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
@@ -145,6 +248,43 @@
     });
     topBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Search Functionality
+    const searchInput = document.getElementById('searchInput');
+    const items = document.querySelectorAll('.item');
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      items.forEach(item => {
+        const dish = item.getAttribute('data-dish').toLowerCase();
+        item.style.display = dish.includes(query) ? 'block' : 'none';
+      });
+    });
+
+    // Simple Fade-in on Scroll (professional, no stagger)
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.item').forEach(el => observer.observe(el));
+
+    // Cart Buttons
+    document.querySelectorAll('.cart-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const item = e.target.getAttribute('data-item');
+        alert(`${item} added to cart! (Demo)`);
+      });
+    });
+
+    // Contact Form
+    document.querySelector('.contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Message sent! (Demo)');
     });
   </script>
 </body>
