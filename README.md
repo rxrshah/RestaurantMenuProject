@@ -5,7 +5,7 @@
 
 ## 🌟 **About**
 
-A simple, responsive restaurant menu site built with HTML, CSS, and JavaScript. Showcases basic menu items like the Chef’s Special (Grilled Lemon Butter Salmon – ₹499).
+A simple, responsive restaurant menu site built with HTML and css.
 
 **Live Demo**: [View Site](https://rxrshah.github.io/RestaurantMenuProject/)
 
